@@ -1,3 +1,4 @@
+// TODO: remove unused parts
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
@@ -15,6 +16,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const healthRouter = require('./routes/healthRoutes');
 const respondentRouter = require('./routes/respondentRoutes');
 const responseRouter = require('./routes/responseRoutes');
+const acceptanceRouter = require('./routes/acceptanceRoutes');
 
 // Start express app
 const app = express();
@@ -68,6 +70,7 @@ app.use(compression());
 app.use('/api/v1/health', healthRouter);
 app.use('/api/v1/respondent', respondentRouter);
 app.use('/api/v1/response', responseRouter);
+app.use('/api/v1/acceptance', acceptanceRouter);
 
 
 app.all('*', (req, res, next) => {

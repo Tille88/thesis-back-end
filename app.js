@@ -2,7 +2,6 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
@@ -27,13 +26,14 @@ app.enable('trust proxy');
 // Implement CORS
 app.use(cors());
 // Access-Control-Allow-Origin *
-// api.natours.com, front-end natours.com
+// TODO: Static website location only
 // app.use(cors({
-//   origin: 'https://www.natours.com'
+//   origin: 'https://www.TODO.com'
 // }))
 
 app.options('*', cors());
-// app.options('/api/v1/tours/:id', cors());
+// TODO: NEEDS CHANGING OR ALL ROUTES?
+// app.options('/api/v1/TODO...', cors());
 
 // Set security HTTP headers
 app.use(helmet());
@@ -42,14 +42,6 @@ app.use(helmet());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-
-// Limit requests from same API
-// const limiter = rateLimit({
-//   max: 100,
-//   windowMs: 60 * 60 * 1000,
-//   message: 'Too many requests from this IP, please try again in an hour!'
-// });
-// app.use('/api', limiter);
 
 
 // Body parser, reading data from body into req.body

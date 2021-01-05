@@ -9,14 +9,16 @@ const IMAGE_COUNT = 10;
 
 let imgIdxs = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "011", "012", "013", "014", "015", "016", "017", "018", "019", "020", "021"];
 let cols = ["red", "blue", "green"];
-let legendTypes = ["annotated", "checkered", "clustered", "headline", "sampled"];
+let legendTypes = ["annotated", "checkered", "clustered", "sampled"];
+let legendBaseline = "headline";
 
 function generateRandomSelection(){
-  let legendProg = [];
-  while(legendProg.length<IMAGE_COUNT){
+  let legendProg = [legendBaseline];
+  while(legendProg.length < (IMAGE_COUNT-1)){
     utils.shuffleArray(legendTypes);
     legendProg = legendProg.concat(legendTypes);
   }
+  legendProg.push(legendBaseline);
 
   let colProg = [];
   utils.shuffleArray(cols);
